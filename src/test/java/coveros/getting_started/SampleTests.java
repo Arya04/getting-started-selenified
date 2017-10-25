@@ -129,7 +129,7 @@ public class SampleTests extends Selenified {
         app.newElement(Locator.XPATH, "//*[@id=\"result_0\"]/div/div/div/div[2]/div[2]/div[1]/a/h2").click();
         app.newElement(Locator.ID, "add-to-cart-button").click();
         app.newElement(Locator.ID, "nav-cart-count").click();
-        app.azzert().textPresent("Subtotal (1 item)");
+        app.azzert().textPresent("Destiny 2 - PC Standard Edition");
     
     }
     
