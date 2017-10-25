@@ -23,7 +23,7 @@ public class AmazonPageTest extends Selenified {
     @BeforeClass(alwaysRun = true)
     public void beforeClass(ITestContext test) {
         // set the base URL for the tests here
-        setTestSite(this, test, "https://www.Amazon.com");
+        setTestSite(this, test, "https://www.amazon.com");
         // set the author of the tests here
         setAuthor(this, test, "Arya Atighehchian\n<br/>arya.atighehchian@coveros.com");
         // set the version of the tests or of the software, possibly with a
