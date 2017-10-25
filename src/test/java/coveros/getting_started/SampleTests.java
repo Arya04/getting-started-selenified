@@ -91,7 +91,7 @@ public class SampleTests extends Selenified {
     	app.newElement(Locator.LINKTEXT, "Settings").click();
     	app.newElement(Locator.LINKTEXT, "Search Help").click();
     	//app.azzert().urlEquals("https://support.google.com/websearch/?visit_id=1-636444718668472423-981266810&hl=en&rd=2#topic=3378866");
-    	app.azzert().textPresent("Welcome to the Google Search Help Center");
+    	app.azzert().textPresent("Google Search Help");
     	finish();
     }
     @Test
@@ -118,6 +118,19 @@ public class SampleTests extends Selenified {
         
         // verify no issues
         finish();
+    }
+    
+    @Test
+    public void testCart() throws Exception {
+    	App app = this.apps.get();
+    	app.goToURL("https://www.amazon.com/");
+        app.newElement(Locator.ID, "twotabsearchtextbox").type("destiny 2");
+        app.newElement(Locator.ID, "twotabsearchtextbox").type(Keys.ENTER);        
+        app.newElement(Locator.XPATH, "//*[@id=\"result_0\"]/div/div/div/div[2]/div[2]/div[1]/a/h2").click();
+        app.newElement(Locator.ID, "add-to-cart-button").click();
+        app.newElement(Locator.ID, "nav-cart-count").click();
+        app.azzert().textPresent("Subtotal (1 item)");
+    
     }
     
 }
