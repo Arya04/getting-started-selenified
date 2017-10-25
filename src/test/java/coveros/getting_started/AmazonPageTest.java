@@ -38,7 +38,7 @@ public class AmazonPageTest extends Selenified {
     	amazon.set(new AmazonPage(this.apps.get()));
     }
 
-    @Test
+    @Test(groups = { "amazon" }, description = "A sample test to check cart")
     public void testCart() throws Exception {
     	
     	amazon.get().search("Destiny 2");

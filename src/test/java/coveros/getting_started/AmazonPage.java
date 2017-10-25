@@ -8,6 +8,9 @@ import org.openqa.selenium.Keys;
 
 public class AmazonPage {
 	private Element searchBox;
+	private Element item;
+	private Element cart;
+	private Element goToCart;
 	App app;
 	
 	public AmazonPage(App app) {
@@ -20,18 +23,18 @@ public class AmazonPage {
 		searchBox.type(Keys.ENTER);
 	}
 	public void goToItem(String xPath) {
-		Element item = app.newElement(Locator.XPATH, xPath);
+		item = app.newElement(Locator.XPATH, xPath);
 		item.click();
 		
 		
 	}
 	public void addToCart() {
-		Element cart = app.newElement(Locator.ID,"add-to-cart-button");
+		cart = app.newElement(Locator.ID,"add-to-cart-button");
 		cart.click();
 		
 	}
 	public void goToCart() {
-		Element goToCart = app.newElement(Locator.ID, "nav-cart-count");
+		goToCart = app.newElement(Locator.ID, "nav-cart-count");
 		goToCart.click();
 		
 		
