@@ -115,13 +115,13 @@ public class SampleTests extends Selenified {
         feelingButton.waitFor().displayed();
         System.out.println("'" + feelingButton.get().attribute("aria-label") + "'");
         Assert.assertTrue(lucky.contains(feelingButton.get().attribute("aria-label")));
-        
         // verify no issues
         finish();
     }
     
     @Test
     public void testCart() throws Exception {
+    	
     	App app = this.apps.get();
     	app.goToURL("https://www.amazon.com/");
         app.newElement(Locator.ID, "twotabsearchtextbox").type("destiny 2");
@@ -130,6 +130,9 @@ public class SampleTests extends Selenified {
         app.newElement(Locator.ID, "add-to-cart-button").click();
         app.newElement(Locator.ID, "nav-cart-count").click();
         app.azzert().textPresent("Destiny 2 - PC Standard Edition");
+        
+        
+        finish();
     
     }
     
