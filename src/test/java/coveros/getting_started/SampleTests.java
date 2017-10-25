@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.HashSet;
 
 import org.openqa.selenium.Keys;
+import org.testng.Assert;
 import org.testng.ITestContext;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -76,11 +77,11 @@ public class SampleTests extends Selenified {
     }
     
     @Test
-    public void testYoutube() throws Exception {
+    public void testArtist() throws Exception {
     	App app = this.apps.get();
     	app.newElement(Locator.CLASSNAME, "_XIi").click();
     	//app.azzert().urlEquals("https://tv.youtube.com/welcome/?utm_source=hpp&utm_medium=hybrid&utm_campaign=ws_1024");
-    	app.azzert().titleEquals("YouTube TV - Watch & DVR Live Sports, Shows & News");
+    	app.azzert().titleEquals("Meet the artist who photographed the world without leaving home | Google");
     	finish();
     }
     
@@ -96,26 +97,27 @@ public class SampleTests extends Selenified {
     @Test
     public void testHover() throws Exception {
     	App app = this.apps.get();
-    	app.newElement(Locator.ID, "gbqfbb").hover();
-    	
-    	HashSet<String> lucky = new HashSet<String>();
-    	
-    	lucky.add("I'm Feeling Doodley");
-    	lucky.add("I'm Feeling Artisitc");
-    	lucky.add("I'm Feeling Hungry");
-    	lucky.add("I'm Feeling Puzzled");
-    	lucky.add("I'm Feeling Trendy");
-    	lucky.add("I'm Feeling Stellar");
-    	lucky.add("I'm Feeling Playful");
-    	lucky.add("I'm Feeling Wonderful");
-    	lucky.add("I'm Feeling Generous");
-    	lucky.add("I'm Feeling Curious");
-    	
-    	app.newElement(Locator.ID, "gbqfba");
-    	app.azzert().textPresent();
-    	
-    	finish();
-    	
+        app.newElement(Locator.ID, "gbqfbb").hover();
+        Element feelingButton = app.newElement(Locator.XPATH, "//*[@id='tsf']/div[2]/div[3]/center/div");
+        
+        HashSet<String> lucky = new HashSet<String>();
+        
+        lucky.add("I'm Feeling Doodley");
+        lucky.add("I'm Feeling Artisitc");
+        lucky.add("I'm Feeling Hungry");
+        lucky.add("I'm Feeling Puzzled");
+        lucky.add("I'm Feeling Trendy");
+        lucky.add("I'm Feeling Stellar");
+        lucky.add("I'm Feeling Playful");
+        lucky.add("I'm Feeling Wonderful");
+        lucky.add("I'm Feeling Generous");
+        lucky.add("I'm Feeling Curious");
+        feelingButton.waitFor().displayed();
+        System.out.println("'" + feelingButton.get().attribute("aria-label") + "'");
+        Assert.assertTrue(lucky.contains(feelingButton.get().attribute("aria-label")));
+        
+        // verify no issues
+        finish();
     }
     
 }
